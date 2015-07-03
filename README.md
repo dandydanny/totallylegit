@@ -35,12 +35,12 @@ Daniel Lu (@dandydanny)
 * 0.1 - Born in a remote, dark test lab
 
 ###Setup Instructions:
-Install VirtualBox
-Grab a copy of Windows 7 IE 10 VM from [Modern.ie Tools page](http://dev.modern.ie/tools/vms/), decompress and import VM
-Launch VM, install Mozilla Firefox
-Install AutoIt 3
-Install [Tesseract 3 OCR Engine](https://github.com/tesseract-ocr) binary for Windows
-Copy Tesseract.au3 to C:\Program Files\AutoIt3\Beta\Include
+1. Install VirtualBox
+2. Grab a copy of Windows 7 IE 10 VM from [Modern.ie Tools page](http://dev.modern.ie/tools/vms/), decompress and import VM
+3. Launch VM, install Mozilla Firefox
+4. Install AutoIt 3
+5. Install [Tesseract 3 OCR Engine](https://github.com/tesseract-ocr) binary for Windows
+6. Copy Tesseract.au3 to C:\Program Files\AutoIt3\Beta\Include
 
 ###How to Run:
 * Need to write this one out
