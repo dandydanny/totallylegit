@@ -34,6 +34,17 @@ Daniel Lu (@dandydanny)
 * 0.2 - Replaced some hard-wired timers with color comparison for detecting slide change
 * 0.1 - Born in a remote, dark test lab
 
+###Setup Instructions:
+Install VirtualBox
+Grab a copy of Windows 7 IE 10 VM from [Modern.ie Tools page](http://dev.modern.ie/tools/vms/), decompress and import VM
+Launch VM, install Mozilla Firefox
+Install AutoIt 3
+Install [Tesseract 3 OCR Engine](https://github.com/tesseract-ocr) binary for Windows
+Copy Tesseract.au3 to C:\Program Files\AutoIt3\Beta\Include
+
+###How to Run:
+* Need to write this one out
+
 ###To Do:
 * Fix issue where single digit captcha results in OCR output of 1
 * Implement OCR result sanity check before survey submit
