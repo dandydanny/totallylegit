@@ -1,17 +1,9 @@
-
 ;Script Name:		SV2 Flex Survey Filler
-;
-;Author: 			Daniel Lu (@dandydanny)
-;
+;Author: 			Daniel Lu
 ;Dependencies:		AutoIt 3
-;					Microsoft Windows 7 (32-bit), 1280x960 resolution, Windows Classic Theme
-;					Oracle VirtualBox
+;					Windows 7, 1280x960 resolution, Windows Classic Theme
 ;					Mozilla Firefox
-;					Tesseract 3 OCR library
-;					Modified Tesseract integration / include file
-;					
-;Version History:	0.9 -	Added ability to fill flights with covey & covey follow-on questions
-;					0.8 - 	Added captcha OCR, added tagging for trackerId
+;Version History:	0.8 - 	Added captcha OCR, added tagging for trackerId
 ;					0.7 - 	Added captcha to coordinate drag logic
 ;					0.6 - 	Added respondent data bank and coordinate look-up logic
 ;					0.5 - 	Added variable for governing transition wait time and mouse speed
@@ -20,17 +12,6 @@
 ;					0.2 - 	Replaced some hard-wired timers with color
 ;							comparison for detecting slide change
 ;					0.1 - 	Initial release
-;
-;To Do:				Fix issue where single digit captcha results in OCR output of 1
-;					Implement OCR result sanity check before survey submit
-;					Support for multi-covey flights
-;					Support for flights with multiple ads
-;					Server-client setup for firing off multiple nodes for simultaneous survey filling
-;					Logic for detecting premature survey rejections
-;					Logic for detecting idle warning dialog box
-;					Logic for determining location of inputs
-;					Basic shape recognition
-
 
 #include <ScreenCapture.au3>
 #include <Date.au3>
@@ -76,7 +57,7 @@ Local $maxRespondents = (UBound($respondentBank) - 1)
 
 ;Get survey URL and respondent number
 $surveyUrl = InputBox("SV2 Flex Survey Helper", "Please enter survey URL (without trackerID):", _
-		"http://sv2a-qacore.food.com/service05/survey-app.html?t=SQiBBWH&p=pnt&trackerId=")
+		"http://sv2a-qacore.foodomain.com/service03/survey-app.html?t=wiqDPKO&p=pnt&trackerId=")
 
 ;Get token
 ;$token = StringRegExp($surveyUrl, "(?i)=([:alnum:]{7})")
@@ -89,7 +70,7 @@ $respondentNumber = Number(InputBox("SV2 Flex Survey Helper", "...and which resp
 ;1-7: single respondent
 If $respondentNumber = 0 Then
 	$loopStart = 1
-	$loopEnd = 4
+	$loopEnd = 7
 ElseIf $respondentNumber > 0 Then
 	$loopStart = $respondentNumber
 	$loopEnd = $respondentNumber
@@ -104,7 +85,7 @@ For $currentRespondentNumber = $loopStart To $loopEnd
 
 	;Respondent vars --------------------------------------------------------
 	Local $testTagging = ""
-	Local $brandRecResponse = "Nissan Sentra"
+	Local $brandRecResponse = "Acura_follow"
 	Local $trackerId = "100" & $currentRespondentNumber & $testTagging
 	Local $intender = False
 	Local $coveySingle = False
@@ -417,7 +398,7 @@ For $currentRespondentNumber = $loopStart To $loopEnd
 		Sleep($keyStrokeDelay)
 		MouseUp("left")
 		Sleep($keyStrokeDelay)
-		Send("My cat is white and cute. " & _DateTimeFormat(_NowCalc, 1))
+		Send("My current car is older, but reliable. " & _DateTimeFormat(_NowCalc, 1))
 
 		;Next
 		MouseMove(900, 525, $mouseSpeed)
@@ -435,7 +416,7 @@ For $currentRespondentNumber = $loopStart To $loopEnd
 		Sleep($keyStrokeDelay)
 		MouseUp("left")
 		Sleep($keyStrokeDelay)
-		Send("I like white cats. " & _DateTimeFormat(_NowCalc, 1))
+		Send("It is easy to maintain. " & _DateTimeFormat(_NowCalc, 1))
 
 		;Next
 		MouseMove(900, 650, $mouseSpeed)
